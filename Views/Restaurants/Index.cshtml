@@ -1,0 +1,26 @@
+﻿@model List<foodArena.Models.Restaurant>
+@{
+    ViewData["Title"] = "Restaurant Page";
+}
+
+<div class="text-center">
+    <h5 class="">Meet the restaurants</h5>
+    <br />
+
+    <div class="row">
+        @foreach (var restaurant in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <!-- This ensures three cards per row -->
+                <div class="card shadow-sm">
+                    <img class="card-img-top" src="@restaurant.Image" alt="@restaurant.Name" style="height: 200px; object-fit: cover;" />
+                    <div class="card-body">
+                        <h5 class="card-title">@restaurant.Name</h5>
+                        <p class="card-text">@restaurant.ShortDescription</p>
+                        <a asp-controller="FoodMenus" asp-action="Index" asp-route-restaurantName="@restaurant.Name">View More</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
